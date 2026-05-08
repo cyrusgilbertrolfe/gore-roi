@@ -20,7 +20,7 @@ const DEFAULTS: AntiCounterfeitAssumptions = {
   avgWarrantyCost: 200,
 };
 
-const MODELED =
+const MODELLED =
   "Two sources of value. (1) Reduced fraudulent returns — counterfeit product or items never sold by the brand are flagged at the return desk before refund. Margin is protected on the prevented refund. (2) Reduced warranty fraud — counterfeit or out-of-warranty items presented as in-warranty are caught at the service counter, avoiding the replacement cost.";
 
 const NOT_INCLUDED = [
@@ -138,7 +138,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

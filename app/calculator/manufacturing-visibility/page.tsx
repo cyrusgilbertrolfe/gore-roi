@@ -25,7 +25,7 @@ const DEFAULTS: ManufacturingVisibilityAssumptions = {
   orderShortfallRatePct: 2,
 };
 
-const MODELED =
+const MODELLED =
   "Three sources of value, all flowing from a single shared source of truth: the factory commissions a Digital ID at the point of production for every garment, and the brand sees that data live. (1) Early delay detection — visibility catches lateness days or weeks earlier, leaving time to re-route by sea instead of airlifting. Saving = late units × unit COGS × air-freight premium. (2) Production visibility — a shared dashboard replaces weekly status calls and chasing emails. Saving = production orders × hours saved per PO × loaded hourly cost. (3) Invoicing accuracy — the brand pays for the Digital IDs actually commissioned, not the units ordered. On a chronic 2% shortfall, this is material and ongoing — the primary payback mechanism in the Ralph Lauren Digital ID deployment.";
 
 const NOT_INCLUDED = [
@@ -221,7 +221,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

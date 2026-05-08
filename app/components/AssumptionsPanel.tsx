@@ -8,12 +8,12 @@ export type AssumptionRow = {
 
 export default function AssumptionsPanel({
   inputs,
-  modeled,
+  modelled,
   notIncluded,
   lastReviewed,
 }: {
   inputs: AssumptionRow[];
-  modeled: string;
+  modelled: string;
   notIncluded: string[];
   lastReviewed?: string;
 }) {
@@ -48,8 +48,8 @@ export default function AssumptionsPanel({
 
       <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
         <div>
-          <h3 className="text-sm font-medium text-ink">What we modeled</h3>
-          <p className="mt-2 text-sm leading-relaxed text-mute">{modeled}</p>
+          <h3 className="text-sm font-medium text-ink">What we modelled</h3>
+          <p className="mt-2 text-sm leading-relaxed text-mute">{modelled}</p>
         </div>
         <div>
           <h3 className="text-sm font-medium text-ink">

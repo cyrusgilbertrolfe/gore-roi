@@ -25,7 +25,7 @@ function defaultsForSector(sectorResaleValue: number): ResaleAssumptions {
   };
 }
 
-const MODELED =
+const MODELLED =
   "Three sources of value. (1) Own-channel resale revenue — items captured into the brand's own resale programme generate revenue at the resale price (a percentage of original retail). (2) Markdown avoidance — end-of-season stock that would have been discounted is instead routed to resale at a smaller discount. (3) New customer acquisition — second buyers are net-new customers at zero advertising spend.";
 
 const NOT_INCLUDED = [
@@ -111,7 +111,7 @@ export default function Page() {
         </h1>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-mute">
           Capture the secondary market the brand built. Used outdoor is its
-          own category — not a fringe behavior.
+          own category — not a fringe behaviour.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_22rem]">
@@ -177,7 +177,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

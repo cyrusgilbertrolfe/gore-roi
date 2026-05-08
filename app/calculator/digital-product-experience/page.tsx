@@ -32,8 +32,8 @@ function defaultsForBrand(
   };
 }
 
-const MODELED =
-  "Three sources of value. (1) Repeat purchase uplift — customers who scan and engage with the Digital ID experience show measurably higher loyalty and repeat purchase, valued at gross margin on incremental orders. (2) Return rate reduction — item-level structured feedback (this product, this size, this colourway) is more actionable for product development than aggregate reviews. (3) Transparency premium — consumers who engage with credible sourcing and material information show higher willingness-to-pay. Modeled conservatively in basis points on own-channel revenue.";
+const MODELLED =
+  "Three sources of value. (1) Repeat purchase uplift — customers who scan and engage with the Digital ID experience show measurably higher loyalty and repeat purchase, valued at gross margin on incremental orders. (2) Return rate reduction — item-level structured feedback (this product, this size, this colourway) is more actionable for product development than aggregate reviews. (3) Transparency premium — consumers who engage with credible sourcing and material information show higher willingness-to-pay. Modelled conservatively in basis points on own-channel revenue.";
 
 const NOT_INCLUDED = [
   "Brand-equity value of being seen as transparent and credibly sourced.",
@@ -191,7 +191,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

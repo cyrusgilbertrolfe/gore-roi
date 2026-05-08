@@ -26,7 +26,7 @@ const DEFAULTS: InStoreTrainingAssumptions = {
   avgMarkdownOtherReturnsPct: 30,
 };
 
-const MODELED =
+const MODELLED =
   "Four sources of value. (1) Labour time saving — staff time spent hunting documentation is eliminated by instant scan-to-info access. (2) Conversion uplift — better-informed associates close more sales, valued at gross margin. (3) Staff retention — confident, well-supported staff stay longer; saving is the avoided cost-per-hire on the attrition delta. (4) Returns reduction — better-informed point-of-sale conversations reduce returns; saving is the markdown loss on returns that would otherwise occur.";
 
 const NOT_INCLUDED = [
@@ -45,7 +45,7 @@ export default function Page() {
     {
       label: "Adoption rate (own stores)",
       display: `${a.adoptionRatePct}%`,
-      source: "Outdoor specialty staff are unusually receptive to product-knowledge tools.",
+      source: "Outdoor speciality staff are unusually receptive to product-knowledge tools.",
     },
     {
       label: "Minutes saved per staff per week",
@@ -55,7 +55,7 @@ export default function Page() {
     {
       label: "Fully loaded hourly cost",
       display: `$${a.fullyLoadedHourlyCost}`,
-      source: "US/EU specialty retail typical.",
+      source: "US/EU speciality retail typical.",
     },
     {
       label: "Conversion uplift",
@@ -70,7 +70,7 @@ export default function Page() {
     {
       label: "Baseline staff attrition",
       display: `${a.baselineAttritionRatePct}%`,
-      source: "Specialty retail attrition is high.",
+      source: "Speciality retail attrition is high.",
     },
     {
       label: "Improved attrition",
@@ -118,7 +118,7 @@ export default function Page() {
           In-Store Training
         </h1>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-mute">
-          Every associate, product-literate from day one. Outdoor specialty
+          Every associate, product-literate from day one. Outdoor speciality
           retail is the gold standard for product-literate staff — and product
           complexity in this segment is the highest in apparel.
         </p>
@@ -211,7 +211,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

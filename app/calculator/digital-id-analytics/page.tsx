@@ -31,7 +31,7 @@ function defaultsForBrand(annualRevenue: number): DigitalIdAnalyticsAssumptions 
   };
 }
 
-const MODELED =
+const MODELLED =
   "Three sources of value. (1) Markdown reduction — post-purchase scan velocity is a leading indicator of product resonance no other data captures. Incorporated into demand planning, it reduces over-ordering on lines that will need markdown. (2) Marketing efficiency — knowing which products and channels drive authenticated post-purchase engagement allows precise spend allocation. (3) Range hit rate — item-level performance data (scan engagement, repair frequency, resale velocity) gives product teams a signal they have never had, reducing miss SKUs.";
 
 const NOT_INCLUDED = [
@@ -235,7 +235,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

@@ -23,7 +23,7 @@ const DEFAULTS: RegistrationWarrantyReturnsAssumptions = {
   opsSavingPerReturn: 0,
 };
 
-const MODELED =
+const MODELLED =
   "Three sources of value. (1) Customer capture from third-party sales — registered away-channel buyers become known, contactable customers, valued at a CAC proxy on each newly-known customer. (2) Repeat purchase uplift on the registered population, valued at gross margin. (3) Prevention of false returns by verifying every return against a real purchase record at the desk before refund.";
 
 const NOT_INCLUDED = [
@@ -170,7 +170,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />

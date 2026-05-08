@@ -26,7 +26,7 @@ const DEFAULTS: RepairServiceAssumptions = {
   throughputUpliftPct: 15,
 };
 
-const MODELED =
+const MODELLED =
   "Three sources of value. (1) Warranty claim validation — Digital ID catches invalid claims (out-of-warranty, counterfeit, customer-damage) at the service counter. (2) Return-to-repair conversion — repairable failures (broken zip, seam, delamination) divert from refund to repair, saving the return cost. (3) Service revenue uplift — paid service events run at higher throughput when technicians have instant access to spec, materials, and warranty status.";
 
 const NOT_INCLUDED = [
@@ -209,7 +209,7 @@ export default function Page() {
 
         <AssumptionsPanel
           inputs={inputs}
-          modeled={MODELED}
+          modelled={MODELLED}
           notIncluded={NOT_INCLUDED}
           lastReviewed="May 2026 — pending validation with Gore product team"
         />
