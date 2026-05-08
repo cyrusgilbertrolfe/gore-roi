@@ -1,68 +1,92 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-/**
- * Site-wide HTTP Basic Auth.
- *
- * - Set `SITE_PASSWORD` in Vercel (and locally in .env.local for development).
- * - Username is ignored — type anything; only the password is checked.
- * - Static assets and the public/logos folder are matched but allowed without
- *   auth headers because matching the matcher excludes _next/static and the
- *   logo paths via the matcher pattern below.
- *
- * In production: missing SITE_PASSWORD returns 503 (fail closed).
- * In development: missing SITE_PASSWORD allows access (preserves DX).
- */
+const COOKIE_NAME = "roi_auth";
+const COOKIE_TTL_SECONDS = 60 * 60 * 8; // 8 hours — fits a session day
 
-const REALM = 'Gore + Kezzler ROI Calculator';
+function isAllowedPath(pathname: string) {
+  if (pathname.startsWith("/_next")) return true;
+  if (
+    pathname === "/favicon.ico" ||
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml"
+  ) {
+    return true;
+  }
+  // Any path with a file extension (logos, images, etc.) — keep these always reachable
+  // so they render on the unauthenticated landing page.
+  if (/\.[a-zA-Z0-9]+$/.test(pathname)) return true;
+  return false;
+}
 
 export function middleware(req: NextRequest) {
-  const password = process.env.SITE_PASSWORD;
+  const { pathname, searchParams } = req.nextUrl;
 
-  if (!password) {
-    if (process.env.NODE_ENV !== 'production') {
-      return NextResponse.next();
-    }
+  if (isAllowedPath(pathname)) return NextResponse.next();
+
+  const sitePassword = process.env.SITE_PASSWORD;
+
+  if (!sitePassword) {
+    // Production: fail closed — better a 503 than an open Gore-branded page.
+    // Development: fail open — keeps local dev frictionless.
+    if (process.env.NODE_ENV !== "production") return NextResponse.next();
     return new NextResponse(
-      'Site is not configured. SITE_PASSWORD is missing.',
+      "Site is not configured. SITE_PASSWORD is missing.",
       { status: 503 }
     );
   }
 
-  const header = req.headers.get('authorization');
-  if (header) {
-    const [scheme, encoded] = header.split(' ');
-    if (scheme === 'Basic' && encoded) {
-      try {
-        const decoded = atob(encoded);
-        const colonIdx = decoded.indexOf(':');
-        const submitted =
-          colonIdx === -1 ? decoded : decoded.slice(colonIdx + 1);
-        if (submitted === password) {
-          return NextResponse.next();
-        }
-      } catch {
-        // fall through to 401
-      }
-    }
+  // Always allow the home page through — it renders the login UI.
+  if (pathname === "/") return NextResponse.next();
+
+  // Logout: clear the cookie and bounce to home.
+  if (pathname === "/logout") {
+    const res = NextResponse.redirect(new URL("/", req.url));
+    res.cookies.set(COOKIE_NAME, "", { path: "/", maxAge: 0 });
+    return res;
   }
 
-  return new NextResponse('Authentication required', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': `Basic realm="${REALM}", charset="UTF-8"`,
-    },
-  });
+  // Already authenticated?
+  if (req.cookies.get(COOKIE_NAME)?.value === "1") {
+    return NextResponse.next();
+  }
+
+  // Password submission: /auth?pw=...&next=/...
+  if (pathname === "/auth") {
+    const pw = searchParams.get("pw") ?? "";
+    const next = searchParams.get("next") ?? "/";
+
+    if (pw === sitePassword) {
+      const res = NextResponse.redirect(new URL(next, req.url));
+      res.cookies.set(COOKIE_NAME, "1", {
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: COOKIE_TTL_SECONDS,
+      });
+      return res;
+    }
+
+    // Wrong password — bounce home with the error flag and preserve the original `next`.
+    const url = new URL("/", req.url);
+    url.searchParams.set("error", "1");
+    url.searchParams.set("next", next);
+    return NextResponse.redirect(url);
+  }
+
+  // Not authenticated, not the auth/home routes — send them home with a `next` to come back to.
+  const url = new URL("/", req.url);
+  url.searchParams.set("next", pathname);
+  return NextResponse.redirect(url);
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match every path except:
-     *   - /_next/static     (build assets)
-     *   - /_next/image      (next/image optimizer)
-     *   - /favicon.ico
-     *   - /logos/...        (Gore + Kezzler logos referenced from the auth challenge page itself)
+    /**
+     * Apply to everything except Next internals and files with extensions
+     * (these are gated by isAllowedPath above too, but the matcher saves the
+     * middleware function call entirely).
      */
-    '/((?!_next/static|_next/image|favicon.ico|logos/).*)',
+    "/((?!_next/|.*\\..*).*)",
   ],
 };
