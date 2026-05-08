@@ -50,6 +50,13 @@ export const USE_CASES: UseCase[] = [
     oneLiner:
       "Provenance, transparency, and engagement, on the product itself.",
   },
+  {
+    id: "UC8",
+    slug: "manufacturing-visibility",
+    title: "Manufacturing Visibility",
+    oneLiner:
+      "Serialised commissioning at the factory — a shared source of truth.",
+  },
 ];
 
 export function getUseCase(slug: string): UseCase | undefined {
