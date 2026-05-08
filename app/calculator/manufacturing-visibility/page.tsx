@@ -29,9 +29,9 @@ const MODELED =
   "Three sources of value, all flowing from a single shared source of truth: the factory commissions a Digital ID at the point of production for every garment, and the brand sees that data live. (1) Early delay detection — visibility catches lateness days or weeks earlier, leaving time to re-route by sea instead of airlifting. Saving = late units × unit COGS × air-freight premium. (2) Production visibility — a shared dashboard replaces weekly status calls and chasing emails. Saving = production orders × hours saved per PO × loaded hourly cost. (3) Invoicing accuracy — the brand pays for the Digital IDs actually commissioned, not the units ordered. On a chronic 2% shortfall, this is material and ongoing — the primary payback mechanism in the Ralph Lauren Digital ID deployment.";
 
 const NOT_INCLUDED = [
-  "Gore-direct savings on factory audit costs from continuous Digital ID data replacing point-in-time inspections.",
-  "Counterfeit Gore-Tex membrane detection — fake membrane currently enters the legitimate supply chain via factory third-shift / diversion. A Gore-orchestrated programme makes this newly detectable. Worth a dedicated Gore-side calculation.",
-  "EU Digital Product Passport compliance margin — the same infrastructure that delivers Manufacturing Visibility delivers DPP readiness, which arrives as a regulatory requirement in 2027–28.",
+  "Gore-direct savings on factory audit costs (relevant for Gore-Tex licensees only) — continuous Digital ID data replacing point-in-time inspections.",
+  "Counterfeit-membrane detection at scale (relevant for Gore-Tex licensees only) — fake membrane currently enters the legitimate supply chain via factory third-shift / diversion. A jointly-orchestrated programme makes this newly detectable. Worth a dedicated Gore-side calculation.",
+  "EU Digital Product Passport compliance margin — the same infrastructure that delivers Manufacturing Visibility delivers DPP readiness, which arrives as a regulatory requirement in 2027–28. Universal value across brands.",
   "Supplier financing improvements from verifiable production data (factories with credible delivery records access better trade-finance terms).",
 ];
 
@@ -112,42 +112,48 @@ export default function Page() {
           email. Disputes resolve before they happen.
         </p>
 
-        {/* Strategic context — Gore-specific framing */}
+        {/* Additive layer for Gore-Tex licensees — visible only when relevant in conversation. */}
         <section className="mt-10 rounded-md border border-warm/30 bg-warm/5 p-6 sm:p-8">
           <p className="text-xs uppercase tracking-[0.18em] text-warm">
-            Where Gore is different
+            For brands using Gore-Tex
           </p>
           <p className="mt-3 text-base leading-relaxed text-ink">
-            Most Manufacturing Visibility programmes are brand-led. Gore&apos;s
-            position is structurally different.
+            The Manufacturing Visibility programme below applies to any outdoor
+            brand. For brands using Gore-Tex on some product lines, three
+            further capabilities become available — additive to the brand-side
+            ROI, not a replacement for it.
           </p>
           <ul className="mt-4 space-y-3 text-sm leading-relaxed text-mute">
             <li>
-              <span className="text-ink">Two-tier authority.</span> A brand
-              request is preferred; a Gore mandate for Gore-Tex licensees is
-              required. Adoption rates and timelines move accordingly.
+              <span className="text-ink">A second tier of authority over the factory.</span>{" "}
+              Most brands already have leverage with their factories — they pay
+              the bills. Gore-Tex licensees gain a second tier: licensing terms
+              also depend on factory compliance. Adoption timelines move faster
+              when both pressures align.
             </li>
             <li>
               <span className="text-ink">Membrane-to-garment provenance.</span>{" "}
-              Today, Gore knows which factory took which membrane batch; the
+              Today Gore knows which factory took which membrane batch; the
               brand knows which factory sent which garments. The two records
-              aren&apos;t joined at item level. A Gore-orchestrated programme
-              closes that gap — and unlocks membrane-level recalls,
-              materials-level sustainability claims backed by data, and
-              counterfeit-membrane detection that is currently impossible.
+              aren&apos;t joined at item level. A jointly-orchestrated Digital
+              ID programme closes that gap — unlocking membrane-level recalls,
+              materials-level sustainability claims (PFAS-free, recycled
+              content) backed by data, and counterfeit-membrane detection that
+              is currently impossible.
             </li>
             <li>
-              <span className="text-ink">Audit infrastructure already in place.</span>{" "}
+              <span className="text-ink">Existing audit infrastructure on the supplier side.</span>{" "}
               Gore already inspects licensee factories. Digital ID is a
               marginal cost on top of an existing inspection regime — and
               continuous data reduces the frequency and cost of those audits.
             </li>
           </ul>
           <p className="mt-4 text-xs text-subtle">
-            The numbers below are the brand-side ROI — what Gore-Tex licensees
-            evaluate when deciding to participate. Gore-direct value (audit
-            cost reduction, counterfeit-membrane detection, DPP-as-a-service)
-            is a separate calculation we should build out together.
+            The numbers in the calculator below are the universal brand-side
+            ROI — applicable to any participating brand. Gore-direct value
+            (audit cost reduction, counterfeit-membrane detection,
+            DPP-as-a-service) is a parallel calculation we should build
+            separately, with Gore.
           </p>
         </section>
 
