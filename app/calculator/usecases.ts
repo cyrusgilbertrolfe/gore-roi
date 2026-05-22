@@ -40,22 +40,22 @@ export const USE_CASES: UseCase[] = [
   {
     id: "UC6",
     slug: "digital-id-analytics",
-    title: "Digital ID Analytics",
+    title: "Smart Label Analytics",
     oneLiner: "Every scan is a signal demand forecasts don't capture.",
   },
   {
     id: "UC7",
     slug: "digital-product-experience",
-    title: "Digital Product Experience",
+    title: "Smart Label Experience",
     oneLiner:
       "Provenance, transparency, and engagement, on the product itself.",
   },
   {
     id: "UC8",
     slug: "manufacturing-visibility",
-    title: "Manufacturing Visibility",
+    title: "Supply Chain Impact",
     oneLiner:
-      "Serialised commissioning at the factory — a shared source of truth.",
+      "Vendor OTD up, customer penalties down, immediate business up. Ralf McCulkey's model.",
   },
 ];
 
