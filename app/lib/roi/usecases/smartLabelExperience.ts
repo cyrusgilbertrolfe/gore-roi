@@ -2,7 +2,7 @@ import type { BrandProfile } from "@/app/brand/brandTypes";
 
 type LineItem = { key: string; label: string; value: number };
 
-export type DigitalProductExperienceAssumptions = {
+export type SmartLabelExperienceAssumptions = {
   annualOwnChannelOrders: number;
   scanEngagementRatePct: number;
   repeatPurchaseUpliftPct: number;
@@ -22,9 +22,9 @@ function pct(v: number): number {
   return safe(v) / 100;
 }
 
-export function calcDigitalProductExperienceRoi(
+export function calcSmartLabelExperienceRoi(
   brand: BrandProfile,
-  a: DigitalProductExperienceAssumptions
+  a: SmartLabelExperienceAssumptions
 ) {
   const annualRevenue = safe(brand.annualRevenue);
   const avgItemPrice = safe(brand.avgItemPrice);

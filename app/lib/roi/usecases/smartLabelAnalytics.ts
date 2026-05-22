@@ -2,7 +2,7 @@ import type { BrandProfile } from "@/app/brand/brandTypes";
 
 type LineItem = { key: string; label: string; value: number };
 
-export type DigitalIdAnalyticsAssumptions = {
+export type SmartLabelAnalyticsAssumptions = {
   annualMarkdownRevenueUsd: number;
   markdownDepthPct: number;
   buyingAccuracyImprovementPct: number;
@@ -27,9 +27,9 @@ function pct(v: number): number {
   return safe(v) / 100;
 }
 
-export function calcDigitalIdAnalyticsRoi(
+export function calcSmartLabelAnalyticsRoi(
   _brand: BrandProfile,
-  a: DigitalIdAnalyticsAssumptions
+  a: SmartLabelAnalyticsAssumptions
 ) {
   const markdownCostBase =
     safe(a.annualMarkdownRevenueUsd) *

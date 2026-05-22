@@ -8,11 +8,11 @@ import RoiSummary from "@/app/components/RoiSummary";
 import Field from "@/app/components/Field";
 import { useBrand } from "@/app/brand/BrandProvider";
 import {
-  calcDigitalIdAnalyticsRoi,
-  type DigitalIdAnalyticsAssumptions,
-} from "@/app/lib/roi/usecases/digitalIdAnalytics";
+  calcSmartLabelAnalyticsRoi,
+  type SmartLabelAnalyticsAssumptions,
+} from "@/app/lib/roi/usecases/smartLabelAnalytics";
 
-function defaultsForBrand(annualRevenue: number): DigitalIdAnalyticsAssumptions {
+function defaultsForBrand(annualRevenue: number): SmartLabelAnalyticsAssumptions {
   const r = annualRevenue || 800_000_000;
   return {
     annualMarkdownRevenueUsd: Math.round(r * 0.1),
@@ -37,16 +37,16 @@ const MODELLED =
 const NOT_INCLUDED = [
   "Compounding strategic value of the signal over time — multi-year NPV is not the right framing for a single-year ROI.",
   "Insights into wholesale partner performance from item-level scan data.",
-  "Product development process improvements — captured in the Digital Product Experience use case instead.",
+  "Product development process improvements — captured in the Smart Label Experience use case instead.",
 ];
 
 export default function Page() {
   const { brand } = useBrand();
-  const [a, setA] = useState<DigitalIdAnalyticsAssumptions>(() =>
+  const [a, setA] = useState<SmartLabelAnalyticsAssumptions>(() =>
     defaultsForBrand(brand.annualRevenue)
   );
 
-  const roi = useMemo(() => calcDigitalIdAnalyticsRoi(brand, a), [brand, a]);
+  const roi = useMemo(() => calcSmartLabelAnalyticsRoi(brand, a), [brand, a]);
 
   const inputs = [
     {
@@ -132,7 +132,7 @@ export default function Page() {
         </div>
 
         <h1 className="mt-4 text-4xl font-medium tracking-tight text-ink">
-          Digital ID Analytics
+          Smart Label Analytics
         </h1>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-mute">
           Every scan is a signal demand forecasts don&apos;t capture. Outdoor

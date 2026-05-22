@@ -27,7 +27,7 @@ const DEFAULTS: RepairServiceAssumptions = {
 };
 
 const MODELLED =
-  "Three sources of value. (1) Warranty claim validation — Digital ID catches invalid claims (out-of-warranty, counterfeit, customer-damage) at the service counter. (2) Return-to-repair conversion — repairable failures (broken zip, seam, delamination) divert from refund to repair, saving the return cost. (3) Service revenue uplift — paid service events run at higher throughput when technicians have instant access to spec, materials, and warranty status.";
+  "Three sources of value. (1) Warranty claim validation — Smart Label catches invalid claims (out-of-warranty, counterfeit, customer-damage) at the service counter. (2) Return-to-repair conversion — repairable failures (broken zip, seam, delamination) divert from refund to repair, saving the return cost. (3) Service revenue uplift — paid service events run at higher throughput when technicians have instant access to spec, materials, and warranty status.";
 
 const NOT_INCLUDED = [
   "Strategic value of the repair narrative for brand differentiation.",
@@ -61,7 +61,7 @@ export default function Page() {
     {
       label: "Validation catch rate",
       display: `${a.validationCatchRatePct}%`,
-      source: "Digital ID is high-confidence for membrane-based authentication.",
+      source: "Smart Label is high-confidence for membrane-based authentication.",
     },
     {
       label: "Repairable share of returns",

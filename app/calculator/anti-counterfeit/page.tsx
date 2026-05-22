@@ -25,7 +25,7 @@ const MODELLED =
 
 const NOT_INCLUDED = [
   "Deterrent effect on counterfeiters of a public, credible authentication programme.",
-  "Marketplace takedown leverage from Digital ID-backed verification.",
+  "Marketplace takedown leverage from Smart Label-backed verification.",
   "Brand equity protection from reduced counterfeit visibility on resale platforms.",
 ];
 

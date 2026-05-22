@@ -8,15 +8,15 @@ import RoiSummary from "@/app/components/RoiSummary";
 import Field from "@/app/components/Field";
 import { useBrand } from "@/app/brand/BrandProvider";
 import {
-  calcDigitalProductExperienceRoi,
-  type DigitalProductExperienceAssumptions,
-} from "@/app/lib/roi/usecases/digitalProductExperience";
+  calcSmartLabelExperienceRoi,
+  type SmartLabelExperienceAssumptions,
+} from "@/app/lib/roi/usecases/smartLabelExperience";
 
 function defaultsForBrand(
   annualRevenue: number,
   ownChannelPct: number,
   avgItemPrice: number
-): DigitalProductExperienceAssumptions {
+): SmartLabelExperienceAssumptions {
   const ownChannelRevenue = (annualRevenue || 800_000_000) * (ownChannelPct / 100 || 0.5);
   const avgOrderValue = (avgItemPrice || 320) * 1.5;
   const orders = Math.max(0, Math.round(ownChannelRevenue / avgOrderValue));
@@ -33,7 +33,7 @@ function defaultsForBrand(
 }
 
 const MODELLED =
-  "Three sources of value. (1) Repeat purchase uplift — customers who scan and engage with the Digital ID experience show measurably higher loyalty and repeat purchase, valued at gross margin on incremental orders. (2) Return rate reduction — item-level structured feedback (this product, this size, this colourway) is more actionable for product development than aggregate reviews. (3) Transparency premium — consumers who engage with credible sourcing and material information show higher willingness-to-pay. Modelled conservatively in basis points on own-channel revenue.";
+  "Three sources of value. (1) Repeat purchase uplift — customers who scan and engage with the Smart Label experience show measurably higher loyalty and repeat purchase, valued at gross margin on incremental orders. (2) Return rate reduction — item-level structured feedback (this product, this size, this colourway) is more actionable for product development than aggregate reviews. (3) Transparency premium — consumers who engage with credible sourcing and material information show higher willingness-to-pay. Modelled conservatively in basis points on own-channel revenue.";
 
 const NOT_INCLUDED = [
   "Brand-equity value of being seen as transparent and credibly sourced.",
@@ -46,12 +46,12 @@ export default function Page() {
   const ownChannelPct =
     brand.channelMix.ownStoresPct + brand.channelMix.ownEcomPct;
 
-  const [a, setA] = useState<DigitalProductExperienceAssumptions>(() =>
+  const [a, setA] = useState<SmartLabelExperienceAssumptions>(() =>
     defaultsForBrand(brand.annualRevenue, ownChannelPct, brand.avgItemPrice)
   );
 
   const roi = useMemo(
-    () => calcDigitalProductExperienceRoi(brand, a),
+    () => calcSmartLabelExperienceRoi(brand, a),
     [brand, a]
   );
 
@@ -114,7 +114,7 @@ export default function Page() {
         </div>
 
         <h1 className="mt-4 text-4xl font-medium tracking-tight text-ink">
-          Digital Product Experience
+          Smart Label Experience
         </h1>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-mute">
           Provenance, transparency, and engagement, on the product itself.
