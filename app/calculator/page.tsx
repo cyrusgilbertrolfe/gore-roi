@@ -35,7 +35,7 @@ export default function CalculatorIndexPage() {
         </div>
 
         <p className="mt-8 max-w-2xl text-base leading-relaxed text-mute">
-          Seven use cases. Each one models a single source of value, lists the
+          Ten use cases. Each one models a single source of value, lists the
           inputs we used and where they came from, and states what the
           calculation deliberately does not include.
         </p>
