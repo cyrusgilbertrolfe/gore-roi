@@ -57,6 +57,18 @@ export const USE_CASES: UseCase[] = [
     oneLiner:
       "Vendor OTD up, customer penalties down, immediate business up. Ralf McCulkey's model.",
   },
+  {
+    id: "UC9",
+    slug: "trade-compliance",
+    title: "Trade & Customs Compliance",
+    oneLiner: "One provenance record. Every regulation. Every shipment.",
+  },
+  {
+    id: "UC10",
+    slug: "digital-product-passport",
+    title: "Digital Product Passport",
+    oneLiner: "Build the DPP data spine now, as a by-product of better operations.",
+  },
 ];
 
 export function getUseCase(slug: string): UseCase | undefined {
